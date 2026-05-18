@@ -8,6 +8,7 @@ settings:
     MARKETING_VERSION: 0.1.0
     GENERATE_INFOPLIST_FILE: YES
     PRODUCT_BUNDLE_IDENTIFIER: fm.last.scrobbler.modern
+    PRODUCT_NAME: LastfmModern
 
 targets:
   LastfmModern:
@@ -20,7 +21,7 @@ targets:
         buildPhase: resources
     settings:
       base:
-        PRODUCT_NAME: Last.fm modern
+        PRODUCT_MODULE_NAME: LastfmModern
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_KEY_CFBundleIconFile: AppIcon.icns
         INFOPLIST_KEY_CFBundleName: Last.fm modern
@@ -38,5 +39,15 @@ targets:
       - target: LastfmModern
     settings:
       base:
+        PRODUCT_MODULE_NAME: LastfmModernTests
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: fm.last.scrobbler.modern.tests
+
+schemes:
+  LastfmModern:
+    build:
+      targets:
+        LastfmModern: [run, test, profile, analyze, archive]
+    test:
+      targets:
+        - LastfmModernTests

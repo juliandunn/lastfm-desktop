@@ -169,6 +169,7 @@ private final class MockAPI: LastfmAPI {
     var nowPlayingTracks: [Track] = []
     var isConfigured: Bool = true
     var isAuthenticated: Bool = true
+    var sessionUsername: String? = "tester"
     var scrobbledTracks: [Track] = []
     var scrobbleFailuresRemaining: Int
     var scrobbleAttempts = 0
@@ -258,6 +259,14 @@ private final class MockAPI: LastfmAPI {
         )
     }
 
+    func fetchSimilarTracks(artist: String, track: String, limit: Int) async throws -> [LastfmSimilarTrack] {
+        [LastfmSimilarTrack(id: "similar", name: track, artist: artist, imageURL: nil, url: nil)]
+    }
+
+    func fetchSimilarAlbums(artist: String, album: String, limit: Int) async throws -> [LastfmSimilarAlbum] {
+        [LastfmSimilarAlbum(id: "similar", name: album, artist: artist, imageURL: nil, url: nil)]
+    }
+
     func fetchUserProfile() async throws -> LastfmUserProfile {
         LastfmUserProfile(
             name: "tester",
@@ -269,7 +278,8 @@ private final class MockAPI: LastfmAPI {
             country: nil,
             url: nil,
             imageURL: nil,
-            registeredAt: nil
+            registeredAt: nil,
+            accountType: "subscriber"
         )
     }
 
@@ -294,6 +304,7 @@ private final class MockAPI: LastfmAPI {
             realname: nil,
             country: nil,
             isSubscriber: false,
+            accountType: "user",
             avatarURL: nil,
             track: "Track",
             artist: "Artist",
@@ -301,6 +312,24 @@ private final class MockAPI: LastfmAPI {
             playedAt: .now,
             nowPlaying: true
         )]
+    }
+
+    func fetchNeighbours(limit: Int) async throws -> [LastfmNeighbour] {
+        [LastfmNeighbour(
+            id: "neighbour",
+            user: "neighbour",
+            realname: nil,
+            country: nil,
+            isSubscriber: false,
+            accountType: "user",
+            avatarURL: nil,
+            profileURL: nil,
+            matchScore: 1.0
+        )]
+    }
+
+    func fetchFriendUsernames(user: String, limit: Int) async throws -> [String] {
+        ["friend1", "friend2"]
     }
 
     func fetchTopArtists(period: LastfmTopArtistPeriod, limit: Int) async throws -> [LastfmTopArtist] {
@@ -331,19 +360,38 @@ private final class TestMonitor: PlayerMonitor {
     }
 }
 
-private final class InMemorySessionStore: LastfmSessionStoring {
-    private var session: LastfmSession?
+private final class InMemorySessionStore: LastfmAccountsStoring {
+    private var sessions: [LastfmSession] = []
+    private var activeUsername: String?
 
     func save(_ session: LastfmSession) {
-        self.session = session
+        sessions.removeAll { $0.name == session.name }
+        sessions.append(session)
+        activeUsername = session.name
     }
 
     func load() -> LastfmSession? {
-        session
+        guard let active = activeUsername else { return sessions.first }
+        return sessions.first { $0.name == active }
     }
 
     func clear() {
-        session = nil
+        if let active = activeUsername {
+            sessions.removeAll { $0.name == active }
+        }
+        activeUsername = sessions.first?.name
+    }
+
+    func allSessions() -> [LastfmSession] {
+        sessions
+    }
+
+    func setActive(username: String?) {
+        activeUsername = username
+    }
+
+    func remove(username: String) {
+        sessions.removeAll { $0.name == username }
     }
 }
 
