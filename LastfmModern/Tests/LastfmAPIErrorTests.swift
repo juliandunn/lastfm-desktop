@@ -1,5 +1,5 @@
 import XCTest
-@testable import LastfmModern
+@testable import Last_fm_modern
 
 final class LastfmAPIErrorTests: XCTestCase {
     func testInvalidSessionHasReauthHint() {
