@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -43,16 +43,16 @@
 		0F7C746DA58DD1528F775CB1 /* ScrobbleQueueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobbleQueueStore.swift; sourceTree = "<group>"; };
 		2E67118C04C7E83F141A2226 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F2CAD7EEE66A29949B944A4 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		4B8A7B0C2A7CC1719D5AF1D1 /* LaunchAtLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginController.swift; sourceTree = "<group>"; };
 		5D0366E9732BBF7659218C63 /* LastfmSignatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastfmSignatureTests.swift; sourceTree = "<group>"; };
+		63A5A8BD0CFCA21E59010A2B /* ProxySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxySettings.swift; sourceTree = "<group>"; };
 		6B3AEE8B258E6E37BBC70350 /* PlayerMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMonitor.swift; sourceTree = "<group>"; };
 		6B9C719DD89BE929B8617D85 /* MoodPaletteEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodPaletteEngine.swift; sourceTree = "<group>"; };
 		72612633A568EC16C6689426 /* PlayerNormalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNormalization.swift; sourceTree = "<group>"; };
 		770A8738C831B64EDC9F712E /* ScrobbleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobbleService.swift; sourceTree = "<group>"; };
 		83578846E1C13C196BCE5C13 /* PlayerNormalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNormalizationTests.swift; sourceTree = "<group>"; };
-		93CA46DD334779024B29A170 /* LastfmModern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastfmModern.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93CA46DD334779024B29A170 /* Last.fm modern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last.fm modern.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F10C6AB1D594AF9733157 /* LastfmAccountsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastfmAccountsStore.swift; sourceTree = "<group>"; };
-		4B8A7B0C2A7CC1719D5AF1D1 /* LaunchAtLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginController.swift; sourceTree = "<group>"; };
-		63A5A8BD0CFCA21E59010A2B /* ProxySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxySettings.swift; sourceTree = "<group>"; };
 		98F39BAA8098761BB8D27B1E /* LastfmAPIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastfmAPIErrorTests.swift; sourceTree = "<group>"; };
 		A7D4EAA843A3ED01728DA93D /* LastfmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastfmAPI.swift; sourceTree = "<group>"; };
 		B5F146F28683F5214FDD43C2 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		E15FF985D1E1E9BA316E899D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				93CA46DD334779024B29A170 /* LastfmModern.app */,
+				93CA46DD334779024B29A170 /* Last.fm modern.app */,
 				BF02D4D4561BB6F4204B54F2 /* LastfmModernTests.xctest */,
 			);
 			name = Products;
@@ -190,7 +190,7 @@
 			packageProductDependencies = (
 			);
 			productName = LastfmModern;
-			productReference = 93CA46DD334779024B29A170 /* LastfmModern.app */;
+			productReference = 93CA46DD334779024B29A170 /* Last.fm modern.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -200,9 +200,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-				};
+				LastUpgradeCheck = 2650;
 			};
 			buildConfigurationList = B5DD8A06A0D7B5EA6DAAB0ED /* Build configuration list for PBXProject "LastfmModern" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -214,7 +212,6 @@
 			);
 			mainGroup = 997F3B0D5DCD7B9D36BD9ACA;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 54;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -284,6 +281,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Last.fm modern";
 				INFOPLIST_KEY_CFBundleIconFile = AppIcon.icns;
 				INFOPLIST_KEY_CFBundleName = "Last.fm modern";
@@ -322,6 +321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Last.fm modern";
 				INFOPLIST_KEY_CFBundleIconFile = AppIcon.icns;
 				INFOPLIST_KEY_CFBundleName = "Last.fm modern";
@@ -372,9 +372,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -397,6 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fm.last.scrobbler.modern;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -408,6 +411,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -456,9 +460,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -474,6 +480,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fm.last.scrobbler.modern;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
